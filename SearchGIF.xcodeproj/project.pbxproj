@@ -14,6 +14,8 @@
 		04DB8BD92768CF62003F7A3D /* SearchGIFTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BD82768CF62003F7A3D /* SearchGIFTests.swift */; };
 		04DB8BE32768CF62003F7A3D /* SearchGIFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BE22768CF62003F7A3D /* SearchGIFUITests.swift */; };
 		04DB8BE52768CF62003F7A3D /* SearchGIFUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BE42768CF62003F7A3D /* SearchGIFUITestsLaunchTests.swift */; };
+		04DB8BFA2768D0D6003F7A3D /* ReactorKit in Frameworks */ = {isa = PBXBuildFile; productRef = 04DB8BF92768D0D6003F7A3D /* ReactorKit */; };
+		04DB8BFF2768D1A6003F7A3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BFE2768D1A6003F7A3D /* SearchViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -45,6 +47,7 @@
 		04DB8BDE2768CF62003F7A3D /* SearchGIFUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SearchGIFUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DB8BE22768CF62003F7A3D /* SearchGIFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFUITests.swift; sourceTree = "<group>"; };
 		04DB8BE42768CF62003F7A3D /* SearchGIFUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		04DB8BFE2768D1A6003F7A3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -52,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04DB8BFA2768D0D6003F7A3D /* ReactorKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -129,6 +133,7 @@
 		04DB8BF12768CF73003F7A3D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
+				04DB8BFC2768D176003F7A3D /* Search */,
 			);
 			path = Scene;
 			sourceTree = "<group>";
@@ -161,6 +166,14 @@
 			path = Utility;
 			sourceTree = "<group>";
 		};
+		04DB8BFC2768D176003F7A3D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				04DB8BFE2768D1A6003F7A3D /* SearchViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -177,6 +190,9 @@
 			dependencies = (
 			);
 			name = SearchGIF;
+			packageProductDependencies = (
+				04DB8BF92768D0D6003F7A3D /* ReactorKit */,
+			);
 			productName = SearchGIF;
 			productReference = 04DB8BBE2768CF60003F7A3D /* SearchGIF.app */;
 			productType = "com.apple.product-type.application";
@@ -249,6 +265,10 @@
 				Base,
 			);
 			mainGroup = 04DB8BB52768CF60003F7A3D;
+			packageReferences = (
+				04DB8BF82768D0D6003F7A3D /* XCRemoteSwiftPackageReference "ReactorKit" */,
+				04DB8BFB2768D0E5003F7A3D /* XCRemoteSwiftPackageReference "Moya" */,
+			);
 			productRefGroup = 04DB8BBF2768CF60003F7A3D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -291,6 +311,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04DB8BFF2768D1A6003F7A3D /* SearchViewController.swift in Sources */,
 				04DB8BC22768CF60003F7A3D /* AppDelegate.swift in Sources */,
 				04DB8BC42768CF60003F7A3D /* SceneDelegate.swift in Sources */,
 			);
@@ -468,7 +489,6 @@
 				INFOPLIST_FILE = SearchGIF/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -496,7 +516,6 @@
 				INFOPLIST_FILE = SearchGIF/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -648,6 +667,33 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		04DB8BF82768D0D6003F7A3D /* XCRemoteSwiftPackageReference "ReactorKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ReactorKit/ReactorKit.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.0;
+			};
+		};
+		04DB8BFB2768D0E5003F7A3D /* XCRemoteSwiftPackageReference "Moya" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Moya/Moya.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		04DB8BF92768D0D6003F7A3D /* ReactorKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 04DB8BF82768D0D6003F7A3D /* XCRemoteSwiftPackageReference "ReactorKit" */;
+			productName = ReactorKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 04DB8BB62768CF60003F7A3D /* Project object */;
 }
