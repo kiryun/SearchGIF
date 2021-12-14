@@ -1,0 +1,6 @@
+framework module Pods_SearchGIF_SearchGIFUITests {
+  umbrella header "Pods-SearchGIF-SearchGIFUITests-umbrella.h"
+
+  export *
+  module * { export * }
+}
