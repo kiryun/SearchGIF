@@ -15,6 +15,9 @@
 		04DB8BE32768CF62003F7A3D /* SearchGIFUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BE22768CF62003F7A3D /* SearchGIFUITests.swift */; };
 		04DB8BE52768CF62003F7A3D /* SearchGIFUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BE42768CF62003F7A3D /* SearchGIFUITestsLaunchTests.swift */; };
 		04DB8BFF2768D1A6003F7A3D /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BFE2768D1A6003F7A3D /* SearchViewController.swift */; };
+		04DB8C012768DF6C003F7A3D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C002768DF6C003F7A3D /* Api.swift */; };
+		04DB8C032768E19F003F7A3D /* ApiParameterBody.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C022768E19F003F7A3D /* ApiParameterBody.swift.swift */; };
+		04DB8C052768E220003F7A3D /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C042768E220003F7A3D /* Encodable+.swift */; };
 		4D6D95ED76860D330F6DA660 /* Pods_SearchGIFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E64AEECA36DAD5980FFAD7A /* Pods_SearchGIFTests.framework */; };
 		B01BCAC7E4556B831566E5CE /* Pods_SearchGIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8EDEB53708EE557CAC8D62 /* Pods_SearchGIF.framework */; };
 		B6382692CB4CBAFBF9B79DDF /* Pods_SearchGIF_SearchGIFUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD2E0D5D39C7387E1AAEA3 /* Pods_SearchGIF_SearchGIFUITests.framework */; };
@@ -51,6 +54,9 @@
 		04DB8BE22768CF62003F7A3D /* SearchGIFUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFUITests.swift; sourceTree = "<group>"; };
 		04DB8BE42768CF62003F7A3D /* SearchGIFUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchGIFUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		04DB8BFE2768D1A6003F7A3D /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		04DB8C002768DF6C003F7A3D /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
+		04DB8C022768E19F003F7A3D /* ApiParameterBody.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParameterBody.swift.swift; sourceTree = "<group>"; };
+		04DB8C042768E220003F7A3D /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
 		07C419151EF615CDD39F8D0C /* Pods-SearchGIF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchGIF.debug.xcconfig"; path = "Target Support Files/Pods-SearchGIF/Pods-SearchGIF.debug.xcconfig"; sourceTree = "<group>"; };
 		2E4AA8CC7DC91A25DC5FE4A4 /* Pods-SearchGIF-SearchGIFUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchGIF-SearchGIFUITests.release.xcconfig"; path = "Target Support Files/Pods-SearchGIF-SearchGIFUITests/Pods-SearchGIF-SearchGIFUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2FCD2E0D5D39C7387E1AAEA3 /* Pods_SearchGIF_SearchGIFUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGIF_SearchGIFUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -163,6 +169,8 @@
 		04DB8BF42768CF84003F7A3D /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				04DB8C022768E19F003F7A3D /* ApiParameterBody.swift.swift */,
+				04DB8C002768DF6C003F7A3D /* Api.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -177,6 +185,7 @@
 		04DB8BF62768CF8E003F7A3D /* Utility */ = {
 			isa = PBXGroup;
 			children = (
+				04DB8C042768E220003F7A3D /* Encodable+.swift */,
 			);
 			path = Utility;
 			sourceTree = "<group>";
@@ -199,7 +208,6 @@
 				E2E8EF037EFCBC1638D90BF6 /* Pods-SearchGIFTests.debug.xcconfig */,
 				84004A60B188C06991DF5F43 /* Pods-SearchGIFTests.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -453,7 +461,10 @@
 			files = (
 				04DB8BFF2768D1A6003F7A3D /* SearchViewController.swift in Sources */,
 				04DB8BC22768CF60003F7A3D /* AppDelegate.swift in Sources */,
+				04DB8C032768E19F003F7A3D /* ApiParameterBody.swift.swift in Sources */,
+				04DB8C052768E220003F7A3D /* Encodable+.swift in Sources */,
 				04DB8BC42768CF60003F7A3D /* SceneDelegate.swift in Sources */,
+				04DB8C012768DF6C003F7A3D /* Api.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
