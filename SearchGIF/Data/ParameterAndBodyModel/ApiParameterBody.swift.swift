@@ -8,6 +8,7 @@
 import Foundation
 
 struct SearchParameter: Codable{
+    var apiKey: String
     var q: String
-    var limit: String?
+    var limit: String? // Int
 }

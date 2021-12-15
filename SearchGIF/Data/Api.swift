@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum Api: TargetType{
-    case search(Int)
+    case search(q: String)
 }
 
 extension Api{
@@ -29,9 +29,11 @@ extension Api{
     }
     
     var task: Task{
+        let apiKey: String = "pUuPo8i25PkTJg12HlZ76KnPPjTWmrk8"
+        
         switch self{
         case .search(let q):
-            let parameter = SearchParameter(q: "\(q)").gifDictionaryConvert ?? [:]
+            let parameter = SearchParameter(apiKey: apiKey, q: q).gifDictionaryConvert ?? [:]
             
             return .requestParameters(parameters: parameter, encoding: URLEncoding.default)
         }

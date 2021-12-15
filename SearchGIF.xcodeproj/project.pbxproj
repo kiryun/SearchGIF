@@ -18,6 +18,10 @@
 		04DB8C012768DF6C003F7A3D /* Api.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C002768DF6C003F7A3D /* Api.swift */; };
 		04DB8C032768E19F003F7A3D /* ApiParameterBody.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C022768E19F003F7A3D /* ApiParameterBody.swift.swift */; };
 		04DB8C052768E220003F7A3D /* Encodable+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C042768E220003F7A3D /* Encodable+.swift */; };
+		04DB8C0727698C05003F7A3D /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C0627698C05003F7A3D /* SearchViewModel.swift */; };
+		04DB8C0A27698C1C003F7A3D /* SearchUsecase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C0927698C1C003F7A3D /* SearchUsecase.swift */; };
+		04DB8C0D27698F56003F7A3D /* Repository.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C0C27698F56003F7A3D /* Repository.swift.swift */; };
+		04DB8C0F2769D770003F7A3D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C0E2769D770003F7A3D /* Search.swift */; };
 		4D6D95ED76860D330F6DA660 /* Pods_SearchGIFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E64AEECA36DAD5980FFAD7A /* Pods_SearchGIFTests.framework */; };
 		B01BCAC7E4556B831566E5CE /* Pods_SearchGIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8EDEB53708EE557CAC8D62 /* Pods_SearchGIF.framework */; };
 		B6382692CB4CBAFBF9B79DDF /* Pods_SearchGIF_SearchGIFUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD2E0D5D39C7387E1AAEA3 /* Pods_SearchGIF_SearchGIFUITests.framework */; };
@@ -57,6 +61,10 @@
 		04DB8C002768DF6C003F7A3D /* Api.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Api.swift; sourceTree = "<group>"; };
 		04DB8C022768E19F003F7A3D /* ApiParameterBody.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiParameterBody.swift.swift; sourceTree = "<group>"; };
 		04DB8C042768E220003F7A3D /* Encodable+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Encodable+.swift"; sourceTree = "<group>"; };
+		04DB8C0627698C05003F7A3D /* SearchViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		04DB8C0927698C1C003F7A3D /* SearchUsecase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchUsecase.swift; sourceTree = "<group>"; };
+		04DB8C0C27698F56003F7A3D /* Repository.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift.swift; sourceTree = "<group>"; };
+		04DB8C0E2769D770003F7A3D /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		07C419151EF615CDD39F8D0C /* Pods-SearchGIF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchGIF.debug.xcconfig"; path = "Target Support Files/Pods-SearchGIF/Pods-SearchGIF.debug.xcconfig"; sourceTree = "<group>"; };
 		2E4AA8CC7DC91A25DC5FE4A4 /* Pods-SearchGIF-SearchGIFUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchGIF-SearchGIFUITests.release.xcconfig"; path = "Target Support Files/Pods-SearchGIF-SearchGIFUITests/Pods-SearchGIF-SearchGIFUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2FCD2E0D5D39C7387E1AAEA3 /* Pods_SearchGIF_SearchGIFUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGIF_SearchGIFUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -162,6 +170,7 @@
 		04DB8BF32768CF7C003F7A3D /* Domain */ = {
 			isa = PBXGroup;
 			children = (
+				04DB8C0827698C13003F7A3D /* Search */,
 			);
 			path = Domain;
 			sourceTree = "<group>";
@@ -169,8 +178,9 @@
 		04DB8BF42768CF84003F7A3D /* Data */ = {
 			isa = PBXGroup;
 			children = (
-				04DB8C022768E19F003F7A3D /* ApiParameterBody.swift.swift */,
+				04DB8C0B27698EE0003F7A3D /* ParameterAndBodyModel */,
 				04DB8C002768DF6C003F7A3D /* Api.swift */,
+				04DB8C0C27698F56003F7A3D /* Repository.swift.swift */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -178,6 +188,7 @@
 		04DB8BF52768CF88003F7A3D /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				04DB8C0E2769D770003F7A3D /* Search.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -193,9 +204,26 @@
 		04DB8BFC2768D176003F7A3D /* Search */ = {
 			isa = PBXGroup;
 			children = (
+				04DB8C0627698C05003F7A3D /* SearchViewModel.swift */,
 				04DB8BFE2768D1A6003F7A3D /* SearchViewController.swift */,
 			);
 			path = Search;
+			sourceTree = "<group>";
+		};
+		04DB8C0827698C13003F7A3D /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				04DB8C0927698C1C003F7A3D /* SearchUsecase.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		04DB8C0B27698EE0003F7A3D /* ParameterAndBodyModel */ = {
+			isa = PBXGroup;
+			children = (
+				04DB8C022768E19F003F7A3D /* ApiParameterBody.swift.swift */,
+			);
+			path = ParameterAndBodyModel;
 			sourceTree = "<group>";
 		};
 		73CB78A8AA9E17C0631DA9CB /* Pods */ = {
@@ -460,9 +488,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				04DB8BFF2768D1A6003F7A3D /* SearchViewController.swift in Sources */,
+				04DB8C0727698C05003F7A3D /* SearchViewModel.swift in Sources */,
 				04DB8BC22768CF60003F7A3D /* AppDelegate.swift in Sources */,
 				04DB8C032768E19F003F7A3D /* ApiParameterBody.swift.swift in Sources */,
 				04DB8C052768E220003F7A3D /* Encodable+.swift in Sources */,
+				04DB8C0A27698C1C003F7A3D /* SearchUsecase.swift in Sources */,
+				04DB8C0D27698F56003F7A3D /* Repository.swift.swift in Sources */,
+				04DB8C0F2769D770003F7A3D /* Search.swift in Sources */,
 				04DB8BC42768CF60003F7A3D /* SceneDelegate.swift in Sources */,
 				04DB8C012768DF6C003F7A3D /* Api.swift in Sources */,
 			);
