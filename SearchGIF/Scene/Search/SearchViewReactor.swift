@@ -1,5 +1,5 @@
 //
-//  SearchViewModel.swift
+//  SearchViewReactor.swift
 //  SearchGIF
 //
 //  Created by Wimes on 2021/12/15.
@@ -8,17 +8,20 @@
 import Foundation
 import ReactorKit
 
-class SearchViewModel: Reactor{
-
+class SearchViewReactor: Reactor{
+    
+    // MARK: Input
     enum Action{
         case fetchSearch(searchText: String)
     }
     
+    // MARK: Output
     struct State{
         var searchResult: Search?
         var isLoading: Bool = false
     }
     
+    // 데이터 가공의 동작을 정의
     enum Mutation{
         case fetchSearchedData(Search)
         case showLoading

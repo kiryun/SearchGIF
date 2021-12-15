@@ -8,6 +8,7 @@ target 'SearchGIF' do
   # Pods for SearchGIF
 	pod 'ReactorKit'
 	pod 'Moya/RxSwift', '~> 15.0'
+	pod 'RxCocoa', '6.2.0'
 
   target 'SearchGIFTests' do
     inherit! :search_paths
