@@ -9,7 +9,7 @@ import Foundation
 import RxSwift
 
 protocol SearchUsecase{
-    func fetchableSearch(searchText: String) -> Observable<Search>
+    func fetchableSearch(searchText: String) -> Observable<[String]>
 }
 
 class SearchUsecaseImpl: SearchUsecase{
@@ -19,7 +19,9 @@ class SearchUsecaseImpl: SearchUsecase{
         self.repository = repository
     }
     
-    func fetchableSearch(searchText: String) -> Observable<Search>{
+    func fetchableSearch(searchText: String) -> Observable<[String]>{
         self.repository.fetchableSearch(searchText: searchText)
+            .map{$0.data.map{$0.url}}
+            
     }
 }

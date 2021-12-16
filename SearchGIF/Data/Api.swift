@@ -37,7 +37,7 @@ extension Api{
                                             q: q,
                                             limit: limit != nil ? "\(limit!)" : nil)
                 .gifDictionaryConvert ?? [:]
-            print(parameter)
+            print("@@ api parameter: ", parameter)
             return .requestParameters(parameters: parameter, encoding: URLEncoding.default)
         }
     }

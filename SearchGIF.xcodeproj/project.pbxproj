@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		040D1E14276B6EED00B9C704 /* ContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 040D1E13276B6EED00B9C704 /* ContentCell.swift */; };
 		04DB8BC22768CF60003F7A3D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BC12768CF60003F7A3D /* AppDelegate.swift */; };
 		04DB8BC42768CF60003F7A3D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8BC32768CF60003F7A3D /* SceneDelegate.swift */; };
 		04DB8BCB2768CF61003F7A3D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 04DB8BCA2768CF61003F7A3D /* Assets.xcassets */; };
@@ -23,7 +24,6 @@
 		04DB8C0D27698F56003F7A3D /* Repository.swift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C0C27698F56003F7A3D /* Repository.swift.swift */; };
 		04DB8C0F2769D770003F7A3D /* Search.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C0E2769D770003F7A3D /* Search.swift */; };
 		04DB8C122769F325003F7A3D /* Reactive+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C112769F325003F7A3D /* Reactive+.swift */; };
-		04DB8C142769F3D7003F7A3D /* ViewModelBindable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04DB8C132769F3D7003F7A3D /* ViewModelBindable.swift */; };
 		4D6D95ED76860D330F6DA660 /* Pods_SearchGIFTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5E64AEECA36DAD5980FFAD7A /* Pods_SearchGIFTests.framework */; };
 		B01BCAC7E4556B831566E5CE /* Pods_SearchGIF.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9B8EDEB53708EE557CAC8D62 /* Pods_SearchGIF.framework */; };
 		B6382692CB4CBAFBF9B79DDF /* Pods_SearchGIF_SearchGIFUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2FCD2E0D5D39C7387E1AAEA3 /* Pods_SearchGIF_SearchGIFUITests.framework */; };
@@ -47,6 +47,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		040D1E13276B6EED00B9C704 /* ContentCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentCell.swift; sourceTree = "<group>"; };
 		04749E400B7360986EC9A63F /* Pods-SearchGIF.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchGIF.release.xcconfig"; path = "Target Support Files/Pods-SearchGIF/Pods-SearchGIF.release.xcconfig"; sourceTree = "<group>"; };
 		04DB8BBE2768CF60003F7A3D /* SearchGIF.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SearchGIF.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		04DB8BC12768CF60003F7A3D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -68,7 +69,6 @@
 		04DB8C0C27698F56003F7A3D /* Repository.swift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Repository.swift.swift; sourceTree = "<group>"; };
 		04DB8C0E2769D770003F7A3D /* Search.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Search.swift; sourceTree = "<group>"; };
 		04DB8C112769F325003F7A3D /* Reactive+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Reactive+.swift"; sourceTree = "<group>"; };
-		04DB8C132769F3D7003F7A3D /* ViewModelBindable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModelBindable.swift; sourceTree = "<group>"; };
 		07C419151EF615CDD39F8D0C /* Pods-SearchGIF.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchGIF.debug.xcconfig"; path = "Target Support Files/Pods-SearchGIF/Pods-SearchGIF.debug.xcconfig"; sourceTree = "<group>"; };
 		2E4AA8CC7DC91A25DC5FE4A4 /* Pods-SearchGIF-SearchGIFUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SearchGIF-SearchGIFUITests.release.xcconfig"; path = "Target Support Files/Pods-SearchGIF-SearchGIFUITests/Pods-SearchGIF-SearchGIFUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2FCD2E0D5D39C7387E1AAEA3 /* Pods_SearchGIF_SearchGIFUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SearchGIF_SearchGIFUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -166,7 +166,6 @@
 		04DB8BF12768CF73003F7A3D /* Scene */ = {
 			isa = PBXGroup;
 			children = (
-				04DB8C132769F3D7003F7A3D /* ViewModelBindable.swift */,
 				04DB8BFC2768D176003F7A3D /* Search */,
 			);
 			path = Scene;
@@ -212,6 +211,7 @@
 			children = (
 				04DB8C0627698C05003F7A3D /* SearchViewReactor.swift */,
 				04DB8BFE2768D1A6003F7A3D /* SearchViewController.swift */,
+				040D1E13276B6EED00B9C704 /* ContentCell.swift */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -496,7 +496,7 @@
 				04DB8BFF2768D1A6003F7A3D /* SearchViewController.swift in Sources */,
 				04DB8C0727698C05003F7A3D /* SearchViewReactor.swift in Sources */,
 				04DB8BC22768CF60003F7A3D /* AppDelegate.swift in Sources */,
-				04DB8C142769F3D7003F7A3D /* ViewModelBindable.swift in Sources */,
+				040D1E14276B6EED00B9C704 /* ContentCell.swift in Sources */,
 				04DB8C032768E19F003F7A3D /* ApiParameterBody.swift.swift in Sources */,
 				04DB8C052768E220003F7A3D /* Encodable+.swift in Sources */,
 				04DB8C0A27698C1C003F7A3D /* SearchUsecase.swift in Sources */,

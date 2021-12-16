@@ -17,13 +17,13 @@ class SearchViewReactor: Reactor{
     
     // MARK: Output
     struct State{
-        var searchResult: Search?
+        var searchResult: [String]?
         var isLoading: Bool = false
     }
     
     // 데이터 가공의 동작을 정의
     enum Mutation{
-        case fetchSearchedData(Search)
+        case fetchSearchedData([String])
         case showLoading
         case hideLoading
     }
