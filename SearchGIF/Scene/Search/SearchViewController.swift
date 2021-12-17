@@ -84,6 +84,8 @@ class SearchViewController: UIViewController, View {
                 }
             })
             .disposed(by: self.disposeBag)
+    
+        
     }
     
     // MARK: Setup

@@ -25,9 +25,9 @@ class ContentCell: UICollectionViewCell {
     }
     
     func configure(imageURL: String){
-        print("@@ ", imageURL)
         
         Observable.just(imageURL)
+            .observe(on: ConcurrentDispatchQueueScheduler.init(qos: .default))
             .compactMap{URL(string: $0) }
             .map{ try Data(contentsOf: $0) }
             .map{ UIImage(data: $0) }
