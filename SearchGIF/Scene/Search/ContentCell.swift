@@ -16,7 +16,6 @@ class ContentCell: UICollectionViewCell {
     
     override init(frame: CGRect){
         super.init(frame: frame)
-        print("@@ init")
         
         self.setupUI()
     }
@@ -26,7 +25,7 @@ class ContentCell: UICollectionViewCell {
     }
     
     func configure(imageURL: String){
-        print(imageURL)
+        print("@@ ", imageURL)
         
         Observable.just(imageURL)
             .compactMap{URL(string: $0) }

@@ -11,6 +11,7 @@ target 'SearchGIF' do
 	pod 'RxCocoa', '6.2.0'
 	pod 'SnapKit', '~> 5.0.0'
 	pod 'Then'
+	pod "RxGesture"
 
   target 'SearchGIFTests' do
     inherit! :search_paths

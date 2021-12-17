@@ -29,8 +29,9 @@ class SearchViewReactor: Reactor{
     }
     
     let initialState: State = State()
-    
+
     var usecase: SearchUsecase
+    let contentLimit: Int = 12
     
     init(usecase: SearchUsecase = SearchUsecaseImpl()){
         self.usecase = usecase
@@ -41,7 +42,7 @@ class SearchViewReactor: Reactor{
         case .fetchSearch(let searchText):
             return Observable.just(Mutation.showLoading)
                 .concat(self.usecase.fetchableSearch(
-                    parameter: SearchParameter(q: searchText, limit: "3")
+                    parameter: SearchParameter(q: searchText, limit: "\(contentLimit)")
                 )
                             .map{Mutation.fetchSearchedData($0)})
                 .concat(Observable.just(Mutation.showLoading))

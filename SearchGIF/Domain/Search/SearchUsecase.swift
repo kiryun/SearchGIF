@@ -21,7 +21,7 @@ class SearchUsecaseImpl: SearchUsecase{
     
     func fetchableSearch(parameter: SearchParameter) -> Observable<[String]>{
         self.repository.fetchableSearch(parameter: parameter)
-            .map{$0.data.map{$0.url}}
+            .map{$0.data.compactMap{$0.images.original.url}}
             
     }
 }
