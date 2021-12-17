@@ -29,9 +29,9 @@ class ContentCell: UICollectionViewCell {
         print(imageURL)
         
         Observable.just(imageURL)
-            .compactMap{URL(string: $0)}
-            .map{ try Data(contentsOf: $0)}
-            .map{ UIImage(data: $0)}
+            .compactMap{URL(string: $0) }
+            .map{ try Data(contentsOf: $0) }
+            .map{ UIImage(data: $0) }
             .bind(to: self.imageView.rx.image)
             .disposed(by: self.disposeBag)
     }

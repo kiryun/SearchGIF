@@ -40,11 +40,11 @@ class SearchViewReactor: Reactor{
         switch action {
         case .fetchSearch(let searchText):
             return Observable.just(Mutation.showLoading)
-                .concat(self.usecase.fetchableSearch(searchText: searchText)
-                            .map{Mutation.fetchSearchedData($0)}
+                .concat(self.usecase.fetchableSearch(
+                    parameter: SearchParameter(q: searchText, limit: "3")
                 )
+                            .map{Mutation.fetchSearchedData($0)})
                 .concat(Observable.just(Mutation.showLoading))
-                
         }
     }
     

@@ -51,12 +51,12 @@ class Fetchable{
 }
 
 protocol Respository{
-    func fetchableSearch(searchText q: String) -> Observable<Search>
+    func fetchableSearch(parameter: SearchParameter) -> Observable<Search>
 }
 
 class SearchRepositoryImpl: Fetchable, Respository{
-    func fetchableSearch(searchText q: String) -> Observable<Search> {
-        self.execute(api: .search(q: q))
+    func fetchableSearch(parameter: SearchParameter) -> Observable<Search> {
+        self.execute(api: .search(parameter))
             .asObservable()
     }
 }

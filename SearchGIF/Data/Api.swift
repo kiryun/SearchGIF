@@ -9,7 +9,7 @@ import Foundation
 import Moya
 
 enum Api: TargetType{
-    case search(q: String, limit: Int? = nil)
+    case search(SearchParameter)
 }
 
 extension Api{
@@ -32,10 +32,8 @@ extension Api{
         let apiKey: String = "pUuPo8i25PkTJg12HlZ76KnPPjTWmrk8"
         
         switch self{
-        case .search(let q, let limit):
-            let parameter = SearchParameter(api_key: apiKey,
-                                            q: q,
-                                            limit: limit != nil ? "\(limit!)" : nil)
+        case .search(let parameter):
+            let parameter = parameter
                 .gifDictionaryConvert ?? [:]
             print("@@ api parameter: ", parameter)
             return .requestParameters(parameters: parameter, encoding: URLEncoding.default)

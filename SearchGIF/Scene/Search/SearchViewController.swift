@@ -29,9 +29,8 @@ class SearchViewController: UIViewController, View {
     
     var contentCollectionView = UICollectionView(
         frame: .zero,
-        collectionViewLayout: UICollectionViewLayout()
+        collectionViewLayout: UICollectionViewFlowLayout()
     ).then{
-        $0.backgroundColor = .white
         $0.register(ContentCell.self, forCellWithReuseIdentifier: String(describing: ContentCell.self))
     }
     
@@ -51,6 +50,7 @@ class SearchViewController: UIViewController, View {
     }
     
     func setupUI(){
+        print("@@ setup ui")
         self.view.backgroundColor = .white
         
         self.view.addSubview(self.contentCollectionView)
@@ -61,13 +61,13 @@ class SearchViewController: UIViewController, View {
     
     func bind(reactor: SearchViewReactor) {
         print("@@ bind")
+        
         self.contentCollectionView.rx.setDelegate(self)
             .disposed(by: self.disposeBag)
         
         // MARK: send
         self.searchController.searchBar.rx.text.orEmpty
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
-            .filter{$0 != ""}
             .map{Reactor.Action.fetchSearch(searchText: $0)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
@@ -75,7 +75,10 @@ class SearchViewController: UIViewController, View {
         // MARK: receive
         reactor.state
             .compactMap{$0.searchResult}
+            .debug("## ")
             .bind(to: self.contentCollectionView.rx.items(cellIdentifier: String(describing: ContentCell.self), cellType: ContentCell.self)){ index, url, cell in
+                print(cell)
+                print(url)
                 cell.configure(imageURL: url)
             }
             .disposed(by: self.disposeBag)
@@ -84,12 +87,12 @@ class SearchViewController: UIViewController, View {
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout{
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-//        return CGSize(width: (collectionView.bounds.size.width - 40) * 0.5,
-//                      height: (collectionView.bounds.size.width - 40) * 0.5)
-        return CGSize(width: 60, height: 60)
+        return CGSize(width: (collectionView.bounds.size.width - 40) * 0.5,
+                      height: (collectionView.bounds.size.width - 40) * 0.5)
                       
     }
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+        print("@@ insets")
         return UIEdgeInsets(top: 20, left: 10, bottom: 10, right: 10)
     }
 }
