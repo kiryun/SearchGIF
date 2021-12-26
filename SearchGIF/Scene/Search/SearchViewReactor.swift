@@ -13,17 +13,20 @@ class SearchViewReactor: Reactor{
     // MARK: Input
     enum Action{
         case fetchSearch(searchText: String)
+        case checkBottom(currentY: CGFloat, bottomY: CGFloat)
     }
     
     // MARK: Output
     struct State{
-        var searchResult: [String]?
+        var searchResult: [String] = [String]()
+        var isBottom: Bool = false
         var isLoading: Bool = false
     }
     
     // 데이터 가공의 동작을 정의
     enum Mutation{
         case fetchSearchedData([String])
+        case hitTheBottom(Bool)
         case showLoading
         case hideLoading
     }
@@ -31,7 +34,7 @@ class SearchViewReactor: Reactor{
     let initialState: State = State()
 
     var usecase: SearchUsecase
-    let contentLimit: Int = 12
+    let contentLimit: Int = 8
     
     init(usecase: SearchUsecase = SearchUsecaseImpl()){
         self.usecase = usecase
@@ -46,6 +49,14 @@ class SearchViewReactor: Reactor{
                 )
                             .map{Mutation.fetchSearchedData($0)})
                 .concat(Observable.just(Mutation.showLoading))
+        case .checkBottom(currentY: let currentY, bottomY: let bottomY):
+            if currentY > bottomY - (bottomY*0.2){
+                print(true)
+                return Observable.just(Mutation.hitTheBottom(true))
+            }else{
+                print(false)
+                return Observable.just(Mutation.hitTheBottom(false))
+            }
         }
     }
     
@@ -54,7 +65,10 @@ class SearchViewReactor: Reactor{
         
         switch mutation {
         case .fetchSearchedData(let search):
-            newState.searchResult = search
+            newState.searchResult += search 
+//            newState.searchResult = search
+        case .hitTheBottom(let isBottom):
+            newState.isBottom = isBottom
         case .showLoading:
             newState.isLoading = true
         case .hideLoading:

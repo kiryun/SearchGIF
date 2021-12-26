@@ -47,11 +47,10 @@ class SearchViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         self.rx.viewWillAppear
-            .observe(on: MainScheduler.instance)
-            .subscribe(onNext: {
-                DispatchQueue.main.async {
-                    self.searchController.searchBar.becomeFirstResponder()
-                }
+        // 위에 viewDidLoad에서 썼던 observe, subscribe 쓰는 것 보다 더 나은 방법
+            .asDriver()
+            .drive(onNext: {
+                self.searchController.searchBar.becomeFirstResponder()
             })
             .disposed(by: self.disposeBag)
 
@@ -62,10 +61,17 @@ class SearchViewController: UIViewController, View {
         self.searchController.searchBar.rx.text.orEmpty
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
         // 같은 아이템 안받기
+            .debug("@@ ")
             .distinctUntilChanged()
             .map{Reactor.Action.fetchSearch(searchText: $0)}
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
+        
+//        self.contentCollectionView.rx.contentOffset
+//            .map{$0.y}
+//            .map{Reactor.Action.checkBottom(currentY: $0, bottomY: self.view.frame.height)}
+//            .bind(to: reactor.action)
+//            .disposed(by: self.disposeBag)
         
         // MARK: receive
         reactor.state
@@ -76,6 +82,14 @@ class SearchViewController: UIViewController, View {
             }
             .disposed(by: self.disposeBag)
         
+//        reactor.state
+//            .filter{$0.isBottom}
+//            .debug("### ")
+//            .map{ _ in Reactor.Action.fetchSearch(searchText: "poke")}
+//            .debug("#### ")
+//            .bind(to: reactor.action)
+//            .disposed(by: self.disposeBag)
+        
         self.view.rx.tapGesture()
             .when(.recognized)
             .subscribe(onNext:{ _ in
@@ -84,12 +98,19 @@ class SearchViewController: UIViewController, View {
                 }
             })
             .disposed(by: self.disposeBag)
-    
         
     }
     
     // MARK: Setup
     func setupController(){
+        
+        // contentCollectionView
+        self.contentCollectionView.rx.willBeginDragging
+            .asDriver()
+            .drive(onNext: {
+                self.searchController.searchBar.resignFirstResponder()
+            })
+            .disposed(by: self.disposeBag)
         
         // searchController
         self.navigationItem.searchController = self.searchController
