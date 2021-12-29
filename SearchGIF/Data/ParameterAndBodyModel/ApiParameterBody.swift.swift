@@ -14,5 +14,6 @@ protocol Parameter: Codable{
 struct SearchParameter: Parameter{
     var api_key: String = "pUuPo8i25PkTJg12HlZ76KnPPjTWmrk8"
     var q: String
+    var offest: String
     var limit: String? // Int
 }

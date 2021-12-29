@@ -67,28 +67,27 @@ class SearchViewController: UIViewController, View {
             .bind(to: reactor.action)
             .disposed(by: self.disposeBag)
         
-//        self.contentCollectionView.rx.contentOffset
-//            .map{$0.y}
-//            .map{Reactor.Action.checkBottom(currentY: $0, bottomY: self.view.frame.height)}
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
+        // 무한 스크롤 구현
+        // 스크롤이 아래로 height 만큼 닿게된다면 action
+        self.contentCollectionView.rx.contentOffset
+            .map{$0.y + self.contentCollectionView.contentInset.bottom}
+            .map{
+                Reactor.Action.attachAtBottom(
+                    currentY: $0,
+                    bottomY: self.contentCollectionView.contentSize.height - self.contentCollectionView.frame.height
+                )
+            }
+            .bind(to: reactor.action)
+            .disposed(by: self.disposeBag)
         
         // MARK: receive
+        // fetchSearch
         reactor.state
             .compactMap{$0.searchResult}
             .bind(to: self.contentCollectionView.rx.items(cellIdentifier: String(describing: ContentCell.self), cellType: ContentCell.self)){ index, url, cell in
-                
                 cell.configure(imageURL: url)
             }
             .disposed(by: self.disposeBag)
-        
-//        reactor.state
-//            .filter{$0.isBottom}
-//            .debug("### ")
-//            .map{ _ in Reactor.Action.fetchSearch(searchText: "poke")}
-//            .debug("#### ")
-//            .bind(to: reactor.action)
-//            .disposed(by: self.disposeBag)
         
         self.view.rx.tapGesture()
             .when(.recognized)

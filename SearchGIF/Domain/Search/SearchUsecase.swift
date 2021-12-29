@@ -21,6 +21,7 @@ class SearchUsecaseImpl: SearchUsecase{
     
     func fetchableSearch(parameter: SearchParameter) -> Observable<[String]>{
         self.repository.fetchableSearch(parameter: parameter)
+            .throttle(.seconds(1), latest: true, scheduler: ConcurrentDispatchQueueScheduler.init(qos: .default))
             .map{$0.data.compactMap{$0.images.original.url}}
             
     }

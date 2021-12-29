@@ -29,8 +29,6 @@ extension Api{
     }
     
     var task: Task{
-        let apiKey: String = "pUuPo8i25PkTJg12HlZ76KnPPjTWmrk8"
-        
         switch self{
         case .search(let parameter):
             let parameter = parameter
