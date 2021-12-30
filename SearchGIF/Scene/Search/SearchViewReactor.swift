@@ -24,7 +24,7 @@ class SearchViewReactor: Reactor{
     
     // 데이터 가공의 동작을 정의
     enum Mutation{
-        case fetchSearchedData([String])
+        case fetchSearchedData(SearchResult)
         case showLoading
         case hideLoading
     }
@@ -56,8 +56,13 @@ class SearchViewReactor: Reactor{
         var newState = state
         
         switch mutation {
-        case .fetchSearchedData(let search):
-            newState.searchResult += search
+        case .fetchSearchedData(let result):
+            if result.newSearch{
+                newState.searchResult = result.search
+            }else{
+                newState.searchResult += result.search
+            }
+            
         case .showLoading:
             newState.isLoading = true
         case .hideLoading:

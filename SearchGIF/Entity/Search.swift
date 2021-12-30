@@ -7,6 +7,12 @@
 
 import Foundation
 
+
+struct SearchResult{
+    var search: [String]
+    var newSearch: Bool
+}
+
 // MARK: - Welcome
 struct Search: Codable {
     let meta: Meta

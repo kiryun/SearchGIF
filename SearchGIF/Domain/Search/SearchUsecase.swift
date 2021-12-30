@@ -8,8 +8,9 @@
 import Foundation
 import RxSwift
 
+
 protocol SearchUsecase{
-    func fetchSearch(searchText: String?) -> Observable<[String]>
+    func fetchSearch(searchText: String?) -> Observable<SearchResult>
     func isTouchBottom(currentY: CGFloat, bottomY: CGFloat) -> Observable<Bool>
 }
 
@@ -32,14 +33,18 @@ class SearchUsecaseImpl: SearchUsecase{
         }
     }
     
-    func fetchSearch(searchText: String? = nil) -> Observable<[String]>{
+    func fetchSearch(searchText: String? = nil) -> Observable<SearchResult>{
+        
+        var newSearch: Bool = false
         
         if let searchText = searchText{
             self.cachedExSearchText = searchText
             self.currentSearchPageOffset = 0
+            newSearch = true
         }else{
             // fetchSearch를 호출할 때 스크롤에 의한 page추가인 경우 searchText가 nil이다.
-            self.currentSearchPageOffset += 1
+            self.currentSearchPageOffset += self.contentLimit
+            newSearch = false
         }
         
         return self.repository.fetchableSearch(
@@ -49,6 +54,8 @@ class SearchUsecaseImpl: SearchUsecase{
                 limit: "\(self.contentLimit)"
             )
         )
-            .map{$0.data.compactMap{$0.images.original.url}}
+            .map{ result -> SearchResult in
+                return SearchResult(search: result.data.compactMap{$0.images.original.url}, newSearch: newSearch)
+            }
     }
 }
