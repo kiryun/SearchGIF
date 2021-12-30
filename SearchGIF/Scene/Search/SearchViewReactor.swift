@@ -32,8 +32,6 @@ class SearchViewReactor: Reactor{
     let initialState: State = State()
 
     var usecase: SearchUsecase
-    let contentLimit: Int = 8
-    var cachedExSearchText: String = ""
     
     init(usecase: SearchUsecase = SearchUsecaseImpl()){
         self.usecase = usecase
@@ -43,11 +41,13 @@ class SearchViewReactor: Reactor{
         switch action {
         case .fetchSearch(let searchText):
             return self.fetchSearch(searchText: searchText)
+            
         case .attachAtBottom(currentY: let currentY, bottomY: let bottomY):
-            if currentY > bottomY{
-                return self.fetchSearch(searchText: self.cachedExSearchText)
-            }
-            return Observable.empty()
+            return self.usecase.isTouchBottom(currentY: currentY, bottomY: bottomY)
+                .flatMap{ isTouchBottom -> Observable<Mutation> in
+                    if isTouchBottom{return self.fetchSearch()}
+                    else{return Observable.empty()}
+                }
                 
         }
     }
@@ -58,8 +58,6 @@ class SearchViewReactor: Reactor{
         switch mutation {
         case .fetchSearchedData(let search):
             newState.searchResult += search
-            print(newState.searchResult)
-//            newState.searchResult = search
         case .showLoading:
             newState.isLoading = true
         case .hideLoading:
@@ -72,14 +70,11 @@ class SearchViewReactor: Reactor{
 }
 
 extension SearchViewReactor{
-    private func fetchSearch(searchText: String) -> Observable<Mutation>{
-        self.cachedExSearchText = searchText
-        
+    private func fetchSearch(searchText: String? = nil) -> Observable<Mutation>{
         return Observable.just(Mutation.showLoading)
             .concat(
-                self.usecase.fetchableSearch(
-                    parameter: SearchParameter(q: searchText, offest: "\(0)", limit: "\(self.contentLimit)")
-                ).map{Mutation.fetchSearchedData($0)}
+                self.usecase.fetchSearch(searchText: searchText)
+                    .map{Mutation.fetchSearchedData($0)}
             )
             .concat(Observable.just(Mutation.showLoading))
     }

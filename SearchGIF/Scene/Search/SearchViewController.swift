@@ -70,6 +70,12 @@ class SearchViewController: UIViewController, View {
         // 무한 스크롤 구현
         // 스크롤이 아래로 height 만큼 닿게된다면 action
         self.contentCollectionView.rx.contentOffset
+        // 스크롤이 여러번 되어서 api 호출을 여러번하는 불상사를 방지
+            .throttle(
+                .milliseconds(500),
+                latest: false,
+                scheduler: MainScheduler.instance
+            )
             .map{$0.y + self.contentCollectionView.contentInset.bottom}
             .map{
                 Reactor.Action.attachAtBottom(
