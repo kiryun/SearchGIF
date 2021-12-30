@@ -21,6 +21,15 @@ class SearchUsecaseImpl: SearchUsecase{
     var cachedExSearchText: String = "" // PublishSubject<String>()
     var currentSearchPageOffset: Int = 0 // PublishSubject<Int>()
     
+    
+//    enum LoadAction{
+//        case load([String])
+//        case loadMore([String])
+//    }
+//
+//    let loadObservable: Observable<[String]> = PublishSubject<[String]>().asObserver()
+//    let loadMoreObservable: Observable<[String]> = PublishSubject<[String]>().asObserver()
+    
     init(repository: Respository = SearchRepositoryImpl()){
         self.repository = repository
     }
@@ -57,5 +66,21 @@ class SearchUsecaseImpl: SearchUsecase{
             .map{ result -> SearchResult in
                 return SearchResult(search: result.data.compactMap{$0.images.original.url}, newSearch: newSearch)
             }
+        
+//        let loadUrl: Observable<LoadAction> = self.loadObservable
+//            .map{LoadAction.load($0)}
+//        let loadMoreUrl: Observable<LoadAction> = self.loadMoreObservable
+//            .map{LoadAction.loadMore($0)}
+//
+//        let UrlResult: Observable<[String]> = Observable.merge(loadUrl, loadMoreUrl)
+//            .scan(into: [String]()) { urls, action in
+//                switch action{
+//                case .load(let newUrls):
+//                    urls = newUrls
+//                case .loadMore(let newUrls):
+//                    urls += newUrls
+//                }
+//            }
+        
     }
 }

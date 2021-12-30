@@ -61,7 +61,6 @@ class SearchViewController: UIViewController, View {
         self.searchController.searchBar.rx.text.orEmpty
             .debounce(.milliseconds(500), scheduler: MainScheduler.instance)
         // 같은 아이템 안받기
-            .debug("@@ ")
             .distinctUntilChanged()
             .map{Reactor.Action.fetchSearch(searchText: $0)}
             .bind(to: reactor.action)
@@ -87,7 +86,6 @@ class SearchViewController: UIViewController, View {
             .disposed(by: self.disposeBag)
         
         // MARK: receive
-        // fetchSearch
         reactor.state
             .compactMap{$0.searchResult}
             .bind(to: self.contentCollectionView.rx.items(cellIdentifier: String(describing: ContentCell.self), cellType: ContentCell.self)){ index, url, cell in
